@@ -1,0 +1,62 @@
+version: "3.3"
+
+# Use this file for an example for production
+
+services:
+  db:
+    image: elestio/mysql:8.0
+    restart: always
+    stdin_open: true
+    ports:
+      - "172.17.0.1:6706:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${ITOP_DB_NAME}
+      - MYSQL_USER=${ITOP_DB_USER}
+      - MYSQL_PASSWORD=${ITOP_DB_PASS}
+    volumes:
+      - ./storage/mysql:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d
+
+  itop:
+    image: vbkunin/itop:latest-base
+    restart: always
+    stdin_open: true
+    environment:
+      - ITOP_DB_HOST=${ITOP_DB_HOST}
+      - ITOP_DB_NAME=${ITOP_DB_NAME}
+      - ITOP_DB_USER=${ITOP_DB_USER}
+      - ITOP_DB_PASS=${ITOP_DB_PASS}
+      - PHP_ENABLE_UPLOADS=${PHP_ENABLE_UPLOADS}
+      - PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT}
+      - PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE}
+      - PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE}
+      - PHP_MAX_FILE_UPLOADS=${PHP_MAX_FILE_UPLOADS}
+      - PHP_MAX_INPUT_TIME=${PHP_MAX_INPUT_TIME}
+      - PHP_LOG_ERRORS=${PHP_LOG_ERRORS}
+      - PHP_ERROR_REPORTING=${PHP_ERROR_REPORTING}
+    links:
+      - db
+    ports:
+      - "172.17.0.1:8282:80"
+    volumes:
+      - ./storage/itop/conf:/var/www/itop/conf
+      - ./storage/itop/data:/var/www/itop/data
+      - ./storage/itop/log:/var/www/itop/log
+      - ./storage/itop/env-production:/var/www/itop/env-production
+      - ./storage/itop/env-production-build:/var/www/itop/env-production-build
+      - ./storage/extensions:/var/www/itop/extensions
+#   adminer:
+#     image: adminer
+#     restart: unless-stopped
+#     stdin_open: true
+#     networks:
+#       - mynetwork
+#     links:
+#       - db
+#     ports:
+#       - "8000:8080"
+
+# networks:
+#   mynetwork:
+#     driver: bridge
