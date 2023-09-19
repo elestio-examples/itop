@@ -16,7 +16,6 @@ services:
       - MYSQL_PASSWORD=${ITOP_DB_PASS}
     volumes:
       - ./storage/mysql:/var/lib/mysql
-      - ./initdb:/docker-entrypoint-initdb.d
 
   itop:
     image: vbkunin/itop:latest-base
@@ -46,6 +45,8 @@ services:
       - ./storage/itop/env-production:/var/www/itop/env-production
       - ./storage/itop/env-production-build:/var/www/itop/env-production-build
       - ./storage/extensions:/var/www/itop/extensions
+      # - /root/.acme.sh/vm.elestio.app:/etc/ssl/vm.elestio.app
+      # - ./default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf
 #   adminer:
 #     image: adminer
 #     restart: unless-stopped

@@ -46,6 +46,8 @@ environments:
     value: "On"
   - key: "PHP_ERROR_REPORTING"
     value: "E_ALL"
+  - key: "DOMAIN"
+    value: "[CI_CD_DOMAIN]"
 
 config:
   runTime: "dockerCompose"
