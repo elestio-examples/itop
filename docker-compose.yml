@@ -8,7 +8,7 @@ services:
     restart: always
     stdin_open: true
     ports:
-      - "172.17.0.1:6706:3306"
+      - "172.17.0.1:40702:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${ITOP_DB_NAME}
@@ -45,19 +45,21 @@ services:
       - ./storage/itop/env-production:/var/www/itop/env-production
       - ./storage/itop/env-production-build:/var/www/itop/env-production-build
       - ./storage/extensions:/var/www/itop/extensions
-      # - /root/.acme.sh/vm.elestio.app:/etc/ssl/vm.elestio.app
-      # - ./default-ssl.conf:/etc/apache2/sites-enabled/default-ssl.conf
-#   adminer:
-#     image: adminer
-#     restart: unless-stopped
-#     stdin_open: true
-#     networks:
-#       - mynetwork
-#     links:
-#       - db
-#     ports:
-#       - "8000:8080"
 
-# networks:
-#   mynetwork:
-#     driver: bridge
+  pma:
+    image: phpmyadmin
+    restart: always
+    links:
+      - db:db
+    ports:
+      - "172.17.0.1:8111:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: pixelfed
+      PMA_PASSWORD: ${ADMIN_PASSWORD}
+      UPLOAD_LIMIT: 500M
+      MYSQL_USERNAME: pixelfed
+      MYSQL_ROOT_PASSWORD: ${ADMIN_PASSWORD}
+    depends_on:
+      - db

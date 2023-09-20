@@ -15,3 +15,9 @@ You can open iTop ADMIN UI here:
     URL: https://[CI_CD_DOMAIN]
     email: [ADMIN_EMAIL]
     password: [ADMIN_PASSWORD]
+
+You can open PHPMyAdmin web UI here:
+
+    URL: https://[CI_CD_DOMAIN]:48152
+    email: root
+    password: [ADMIN_PASSWORD]
