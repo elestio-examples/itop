@@ -18,19 +18,19 @@ Here's how to do it:
 - Accept all checkboxes and continue
 - for the database use these credentials:
 
-  Server Name: 172.17.0.1:35700
+        Server Name: 172.17.0.1:35700
 
-  Login: root
+        Login: root
 
-  Password [ADMIN_PASSWORD]
+        Password [ADMIN_PASSWORD]
 
 - Once you have a success message, choose `Use the existing database` with database `itop`, then click on next
 
 - For the Administration account, you can use theses credentials:
 
-  Login: admin
+        Login: admin
 
-  Password: [ADMIN_PASSWORD]
+        Password: [ADMIN_PASSWORD]
 
 - In the next page, make sure that on Application section, url is `https://[CI_CD_DOMAIN]/` and click on `I am installing a production instance, create an empty database to start from.`
 
@@ -79,6 +79,6 @@ Change it to
 
     'email_default_sender_address' => '[DOMAIN]@vm.elestio.app'
 
-Apply
+Apply<br/>
 
 To test it, you can go to the `Notification` section that is in `Confiugration` section on the left tab, and click on `email.test.php`
