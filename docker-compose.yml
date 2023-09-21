@@ -18,7 +18,7 @@ services:
       - ./storage/mysql:/var/lib/mysql
 
   itop:
-    image: vbkunin/itop:latest-base
+    image: vbkunin/itop:${SOFTWARE_VERSION_TAG}
     restart: always
     stdin_open: true
     environment:
