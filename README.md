@@ -43,7 +43,7 @@ Here's how to do it:
 You can open iTop ADMIN UI here:
 
     URL: https://[CI_CD_DOMAIN]
-    email: [ADMIN_EMAIL]
+    email: admin
     password: [ADMIN_PASSWORD]
 
 You can open PHPMyAdmin web UI here:
