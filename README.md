@@ -24,12 +24,12 @@ Here's how to do it:
 
 - Once you have a success message, choose `Use the existing database` with database `itop`, then click on next
 
-- For the Administration account, you can use theses credentials:
+- For the Administration account, you can use these credentials:
 
         Login: admin
         Password: [ADMIN_PASSWORD]
 
-- In the next page, make sure that on Application section, url is `https://[CI_CD_DOMAIN]/` and click on `I am installing a production instance, create an empty database to start from.`
+- On the next page, make sure that on the Application section, url is `https://[CI_CD_DOMAIN]/` and click on `I am installing a production instance, create an empty database to start from.`
 
 - On `Configuration Management options` click next
 - On `Service Management options` click next
@@ -46,7 +46,7 @@ You can open iTop ADMIN UI here:
     email: admin
     password: [ADMIN_PASSWORD]
 
-You can open PHPMyAdmin web UI here:
+You can open the PHPMyAdmin web UI here:
 
     URL: https://[CI_CD_DOMAIN]:48152
     email: root
@@ -54,9 +54,9 @@ You can open PHPMyAdmin web UI here:
 
 # SMTP configuration
 
-To configure the SMTP, go to `Confiugration` section on the left tab, and choose `General Configuration`
+To configure the SMTP, go to the `Configuration` section on the left tab, and choose `General Configuration`
 
-A configuration File Editor will appear.
+A Configuration File Editor will appear.
 
 Search
 
@@ -78,4 +78,4 @@ Change it to
 
 Apply<br/>
 
-To test it, you can go to the `Notification` section that is in `Confiugration` section on the left tab, and click on `email.test.php`
+To test it, you can go to the `Notification` section that is in the `Configuration` section on the left tab, and click on `email.test.php`
